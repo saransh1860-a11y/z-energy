@@ -39,47 +39,65 @@ export function Transformations() {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {results.map((res, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="group glass p-2 rounded-3xl overflow-hidden"
+              transition={{ delay: idx * 0.1, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              className="group relative glass-morphism rounded-[40px] overflow-hidden border border-white/5 transition-all duration-700 hover:border-primary-red/30 hover:translate-y-[-12px]"
             >
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-6">
+              <div className="aspect-[4/5] overflow-hidden relative">
                 <img
                   src={res.img}
                   alt={res.name}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-black via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black via-black/20 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-700" />
                 
-                <div className="absolute bottom-6 left-6 right-6">
-                  <p className="text-xs font-black uppercase tracking-widest text-primary-red mb-1">{res.duration} Transformation</p>
-                  <h4 className="text-2xl font-display font-black uppercase italic text-white tracking-tight">{res.name}</h4>
+                <div className="absolute top-8 left-8">
+                   <div className="px-4 py-1.5 glass rounded-full flex items-center gap-2 border border-white/10 shadow-2xl">
+                      <div className="w-1.5 h-1.5 bg-primary-red rounded-full animate-pulse" />
+                      <span className="text-[9px] font-black uppercase tracking-[0.2em] text-white">Verified Result</span>
+                   </div>
+                </div>
+
+                <div className="absolute bottom-10 left-10">
+                   <p className="text-[10px] font-black uppercase tracking-[0.4em] text-primary-red mb-2 italic">{res.duration} Journey</p>
+                   <h3 className="text-4xl font-display font-black uppercase tracking-tighter text-white italic drop-shadow-2xl">{res.name}</h3>
                 </div>
               </div>
 
-              <div className="px-6 pb-8">
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="p-4 bg-white/5 rounded-xl border-l-2 border-primary-red">
-                    <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mb-1 italic">Status</p>
-                    <p className="text-xs font-black text-white uppercase">{res.loss}</p>
+              <div className="p-10 relative">
+                <div className="grid grid-cols-2 gap-4 mb-8">
+                  <div className="bg-white/[0.03] border border-white/5 p-4 rounded-2xl flex flex-col items-center">
+                    <span className="text-[8px] font-black uppercase tracking-widest text-gray-500 mb-1">Status</span>
+                    <span className="text-xs font-black text-white italic text-center uppercase tracking-tighter">{res.loss}</span>
                   </div>
-                  <div className="p-4 bg-white/5 rounded-xl border-l-2 border-accent-blue">
-                    <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mb-1 italic">Result</p>
-                    <p className="text-xs font-black text-white uppercase">{res.gain}</p>
+                  <div className="bg-white/[0.03] border border-white/5 p-4 rounded-2xl flex flex-col items-center">
+                    <span className="text-[8px] font-black uppercase tracking-widest text-gray-500 mb-1">Outcome</span>
+                    <span className="text-xs font-black text-white italic text-center uppercase tracking-tighter">{res.gain}</span>
                   </div>
                 </div>
 
                 <div className="relative">
-                  <Quote className="absolute -top-4 -left-2 text-primary-red opacity-20" size={32} />
-                  <p className="text-sm text-gray-400 font-medium italic relative z-10 pl-6">
+                  <Quote className="absolute -top-4 -left-2 text-primary-red opacity-10" size={40} />
+                  <p className="text-gray-400 text-sm leading-relaxed mb-6 font-medium italic pl-6">
                     "{res.quote}"
                   </p>
+                </div>
+
+                <div className="w-full h-[1px] bg-white/5 mb-6" />
+
+                <div className="flex items-center gap-4">
+                   <div className="flex gap-0.5">
+                      {[...Array(5)].map((_, i) => (
+                        <div key={i} className="w-1.5 h-1.5 bg-primary-red rounded-full" />
+                      ))}
+                   </div>
+                   <span className="text-[9px] font-black uppercase tracking-[0.2em] text-gray-600">Authenticated Success</span>
                 </div>
               </div>
             </motion.div>

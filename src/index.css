@@ -7,8 +7,8 @@
   
   --color-primary-red: #ff3333;
   --color-accent-blue: #0088ff;
-  --color-dark-bg: #0a0a0a;
-  --color-dark-card: #151515;
+  --color-dark-bg: #050505;
+  --color-dark-card: #0f0f0f;
 }
 
 @layer base {
@@ -19,11 +19,29 @@
 }
 
 .glass {
-  @apply bg-white/5 backdrop-blur-md border border-white/10;
+  @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.08];
+}
+
+.glass-morphism {
+  @apply bg-white/[0.01] backdrop-blur-2xl border border-white/[0.05] shadow-[0_8px_32px_0_rgba(0,0,0,0.8)];
 }
 
 .text-gradient {
-  @apply bg-clip-text text-transparent bg-linear-to-r from-white via-gray-300 to-gray-500;
+  @apply bg-clip-text text-transparent bg-linear-to-b from-white via-white to-gray-500;
+}
+
+.text-glow {
+  text-shadow: 0 0 30px rgba(255, 51, 51, 0.4);
+}
+
+.border-glow {
+  @apply border-white/10 hover:border-primary-red/50 transition-all duration-500;
+}
+
+.bg-mesh {
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(255, 51, 51, 0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(0, 136, 255, 0.05) 0px, transparent 50%);
 }
 
 .glow-red {

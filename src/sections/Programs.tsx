@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Dumbbell, Flame, Zap, Heart, UserCheck, Timer, Trophy, ShieldCheck } from 'lucide-react';
+import { Dumbbell, Flame, Zap, Heart, UserCheck, Timer, Trophy, ShieldCheck, ArrowRight } from 'lucide-react';
 
 export function Programs() {
   const programs = [
@@ -86,30 +86,39 @@ export function Programs() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              whileHover={{ y: -10 }}
-              className={`group relative p-8 glass rounded-2xl overflow-hidden border-none transition-all duration-500 hover:shadow-[0_20px_50px_rgba(255,51,51,0.1)]`}
+              transition={{ delay: idx * 0.1, duration: 0.8 }}
+              className="group relative p-8 glass-morphism rounded-[32px] overflow-hidden border border-white/5 transition-all duration-700 hover:border-primary-red/30 hover:translate-y-[-12px]"
             >
-              <div className={`absolute inset-0 bg-linear-to-br ${program.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+              <div className={`absolute inset-0 bg-linear-to-br ${program.color} opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
               
               <div className="relative z-10">
-                <div className="w-16 h-16 bg-white/5 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary-red transition-colors duration-500">
-                  <program.icon className="text-primary-red group-hover:text-white transition-colors duration-500" size={32} />
+                <div className="w-20 h-20 bg-white/[0.03] border border-white/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary-red group-hover:scale-110 transition-all duration-500 group-hover:shadow-[0_0_30px_rgba(255,51,51,0.3)]">
+                  <program.icon className="text-primary-red group-hover:text-white transition-colors duration-500" size={36} strokeWidth={1.5} />
                 </div>
                 
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary-red mb-2 block">{program.tag}</span>
-                <h3 className="text-2xl font-display font-black uppercase italic mb-4">{program.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed mb-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="w-8 h-[2px] bg-primary-red" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary-red">{program.tag}</span>
+                </div>
+                
+                <h3 className="text-3xl font-display font-black uppercase italic mb-6 leading-tight group-hover:text-white transition-colors">
+                  {program.title.split(' & ').join(' \n& ')}
+                </h3>
+                
+                <p className="text-gray-400 text-sm leading-relaxed mb-10 group-hover:text-gray-300 transition-colors">
                   {program.desc}
                 </p>
                 
-                <button className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-white group-hover:text-primary-red transition-all">
-                  Explore Method <Timer size={14} />
+                <button className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em] text-white hover:text-primary-red transition-all group/btn">
+                  Explore Method 
+                  <div className="w-6 h-6 rounded-full border border-white/20 flex items-center justify-center group-hover/btn:border-primary-red transition-all">
+                    <ArrowRight size={10} className="group-hover/btn:translate-x-0.5 transition-transform" />
+                  </div>
                 </button>
               </div>
 
               {/* Decorative background glow */}
-              <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-primary-red/5 blur-3xl rounded-full" />
+              <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-primary-red/10 blur-[100px] rounded-full group-hover:bg-primary-red/20 transition-all duration-700" />
             </motion.div>
           ))}
         </div>

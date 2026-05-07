@@ -2,88 +2,96 @@ import { Instagram, Twitter, Youtube, Facebook, MapPin, Phone, Mail, Clock } fro
 
 export function Footer() {
   return (
-    <footer className="pt-24 pb-8 bg-black border-t border-white/5 relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-linear-to-r from-transparent via-primary-red to-transparent opacity-50" />
-      
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          <div className="space-y-8">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-primary-red rounded-sm flex items-center justify-center rotate-45 transform">
-                <span className="text-white font-black text-lg -rotate-45">Z</span>
+    <footer className="pt-24 pb-12 bg-black relative overflow-hidden border-t border-white/5">
+      {/* Decorative background glow */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-7xl aspect-square bg-primary-red/5 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-16 mb-20">
+          <div className="lg:col-span-4 space-y-10">
+            <div className="flex items-center gap-3 group cursor-pointer">
+              <div className="w-10 h-10 bg-primary-red rounded-xl flex items-center justify-center rotate-45 transform group-hover:rotate-[225deg] transition-all duration-700 shadow-[0_0_20px_rgba(255,51,51,0.3)]">
+                <span className="text-white font-black text-xl -rotate-45 group-hover:rotate-[135deg] transition-all duration-700">Z</span>
               </div>
-              <span className="text-xl font-display font-black tracking-tighter uppercase italic">
+              <span className="text-2xl font-display font-black tracking-tighter uppercase italic text-white">
                 Zenergy<span className="text-primary-red">Fitness</span>
               </span>
             </div>
-            <p className="text-gray-500 text-sm leading-relaxed font-medium">
-              We are a premier high-performance fitness destination. Our goal is to push the boundaries of human potential through elite coaching and technology.
+            
+            <p className="text-gray-500 text-sm leading-relaxed font-medium max-w-sm">
+              The pinnacle of performance in Ambala. We are a specialized sanctuary for those who refuse to settle for ordinary results. Engineering physiques, architecting mindsets.
             </p>
+
             <div className="flex gap-4">
-              {[Instagram, Twitter, Youtube, Facebook].map((Icon, i) => (
-                <div key={i} className="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-primary-red transition-all cursor-pointer group">
-                  <Icon size={18} className="group-hover:scale-110" />
-                </div>
+              {[Instagram, Facebook, Twitter, Youtube].map((Icon, idx) => (
+                <a 
+                  key={idx} 
+                  href="#" 
+                  className="w-12 h-12 glass-morphism rounded-2xl flex items-center justify-center hover:bg-primary-red hover:text-white transition-all duration-500 group shadow-xl"
+                >
+                  <Icon size={18} className="text-gray-400 group-hover:text-white group-hover:scale-110 transition-all" />
+                </a>
               ))}
             </div>
           </div>
 
-          <div>
-            <h4 className="text-xs font-black uppercase tracking-[0.3em] text-white mb-8 border-l-2 border-primary-red pl-4">Elite Navigation</h4>
-            <ul className="space-y-4">
-              {['Home', 'Programs', 'Trainers', 'Pricing', 'Transformations', 'Contact'].map((item) => (
-                <li key={item}>
-                  <a href={`#${item.toLowerCase()}`} className="text-gray-400 hover:text-primary-red text-sm font-bold uppercase tracking-widest transition-colors flex items-center gap-2">
-                    <span className="w-1 h-1 bg-white/20 rounded-full" /> {item}
+          <div className="lg:col-span-2">
+            <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-white mb-10 border-l-2 border-primary-red pl-4">Arena</h4>
+            <ul className="space-y-6">
+              {['Home', 'Programs', 'Trainers', 'Pricing', 'Transformations', 'Contact'].map((link) => (
+                <li key={link}>
+                  <a href={`#${link.toLowerCase()}`} className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 hover:text-primary-red transition-colors flex items-center gap-3 group">
+                    <div className="w-1.5 h-1.5 bg-white/10 rounded-full group-hover:bg-primary-red transition-colors" /> {link}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div>
-            <h4 className="text-xs font-black uppercase tracking-[0.3em] text-white mb-8 border-l-2 border-primary-red pl-4">The Location</h4>
-            <ul className="space-y-6">
-              <li className="flex gap-4">
-                <MapPin className="text-primary-red shrink-0" size={20} />
-                <span className="text-sm text-gray-400 font-medium">Inco road, Luxmi Nagar, Ambala, Haryana 134003</span>
+          <div className="lg:col-span-3">
+            <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-white mb-10 border-l-2 border-primary-red pl-4">Deployment</h4>
+            <ul className="space-y-8">
+              <li className="flex gap-4 group cursor-pointer">
+                <MapPin className="text-primary-red shrink-0 transition-transform group-hover:scale-110" size={20} />
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest leading-relaxed group-hover:text-white transition-colors">Inco road, Luxmi Nagar,<br />Ambala, Haryana 134003</span>
               </li>
-              <li className="flex gap-4">
-                <Phone className="text-primary-red shrink-0" size={20} />
-                <span className="text-sm text-gray-400 font-medium">+91 98765 43210</span>
+              <li className="flex gap-4 group cursor-pointer">
+                <Phone className="text-primary-red shrink-0 transition-transform group-hover:scale-110" size={20} />
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest group-hover:text-white transition-colors">+91 98765 43210</span>
               </li>
-              <li className="flex gap-4">
-                <Mail className="text-primary-red shrink-0" size={20} />
-                <span className="text-sm text-gray-400 font-medium">contact@zenergyfitness.in</span>
+              <li className="flex gap-4 group cursor-pointer">
+                <Mail className="text-primary-red shrink-0 transition-transform group-hover:scale-110" size={20} />
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest group-hover:text-white transition-colors underline decoration-primary-red/30 underline-offset-4">contact@zenergyfitness.in</span>
               </li>
             </ul>
           </div>
 
-          <div>
-            <h4 className="text-xs font-black uppercase tracking-[0.3em] text-white mb-8 border-l-2 border-primary-red pl-4">Operation Hours</h4>
-            <ul className="space-y-4">
-              <li className="flex justify-between items-center text-sm">
-                <span className="text-gray-500 font-bold uppercase tracking-widest">Mon - Sun</span>
-                <span className="text-white font-black italic">6:00 - 21:00</span>
-              </li>
-            </ul>
-            
-            <div className="mt-8">
-               <button className="w-full bg-white/5 border border-white/10 py-3 rounded-lg text-[10px] font-black uppercase tracking-[0.2em] hover:bg-primary-red hover:border-primary-red transition-all">
-                Member Login
-               </button>
+          <div className="lg:col-span-3">
+            <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-white mb-10 border-l-2 border-primary-red pl-4">Operations</h4>
+            <div className="glass-morphism p-8 rounded-[32px] border border-white/5 space-y-6 shadow-2xl">
+              <div className="flex justify-between items-center group">
+                <span className="text-[10px] text-gray-500 font-black uppercase tracking-widest">Mon - Sun</span>
+                <span className="text-white font-display font-black italic group-hover:text-primary-red transition-colors text-sm">06:00 — 21:00</span>
+              </div>
+              <div className="w-full h-[1px] bg-white/5" />
+              <div className="flex flex-col gap-4">
+                 <p className="text-[8px] font-black uppercase tracking-[0.3em] text-gray-600">Peak Performance Protocol Active</p>
+                 <button className="w-full py-4 bg-white/5 border border-white/10 rounded-xl text-[9px] font-black uppercase tracking-[0.3em] hover:bg-primary-red hover:border-primary-red hover:text-white transition-all">
+                    Member Portal
+                 </button>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-[10px] font-bold text-gray-600 uppercase tracking-widest">
-            © 2024 Zenergy Fitness Club. All Rights Reserved.
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <p className="text-[9px] font-black text-gray-600 uppercase tracking-[0.4em]">
+            © 2024 Zenergy Fitness Group. Engineered for Results.
           </p>
-          <div className="flex gap-8 text-[10px] font-bold text-gray-600 uppercase tracking-widest">
-            <a href="#" className="hover:text-white">Privacy Policy</a>
-            <a href="#" className="hover:text-white">Terms of Elite Service</a>
-            <a href="#" className="hover:text-white">Cookie Control</a>
+          <div className="flex gap-10 text-[9px] font-black text-gray-600 uppercase tracking-[0.4em]">
+            <a href="#" className="hover:text-primary-red transition-colors">Privacy</a>
+            <a href="#" className="hover:text-primary-red transition-colors">Terms</a>
+            <a href="#" className="hover:text-primary-red transition-colors">Cookies</a>
           </div>
         </div>
       </div>

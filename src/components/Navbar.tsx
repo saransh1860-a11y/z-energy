@@ -21,33 +21,34 @@ export function Navbar() {
   return (
     <nav
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4',
-        scrolled ? 'bg-black/90 backdrop-blur-lg border-b border-white/10' : 'bg-transparent'
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-700 px-6',
+        scrolled ? 'py-4 glass-morphism border-b border-white/5' : 'py-8 bg-transparent'
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-primary-red rounded-sm flex items-center justify-center rotate-45 transform">
-            <span className="text-white font-black text-xl -rotate-45">Z</span>
+        <div className="flex items-center gap-3 group cursor-pointer">
+          <div className="w-10 h-10 bg-primary-red rounded-xl flex items-center justify-center rotate-45 transform group-hover:rotate-[225deg] transition-all duration-700 shadow-[0_0_20px_rgba(255,51,51,0.3)] group-hover:shadow-[0_0_40px_rgba(255,51,51,0.6)]">
+            <span className="text-white font-black text-xl -rotate-45 group-hover:rotate-[135deg] transition-all duration-700">Z</span>
           </div>
-          <span className="text-2xl font-display font-black tracking-tighter uppercase italic">
-            Zenergy<span className="text-primary-red italic">Fitness</span>
+          <span className="text-2xl font-display font-black tracking-tighter uppercase italic text-white group-hover:tracking-widest transition-all duration-500">
+            Zenergy<span className="text-primary-red">Fitness</span>
           </span>
         </div>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-10">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-sm font-medium uppercase tracking-widest hover:text-primary-red transition-colors"
+              className="text-[10px] font-black uppercase tracking-[0.3em] text-white/70 hover:text-primary-red transition-all relative group"
             >
               {link.name}
+              <span className="absolute -bottom-2 left-0 w-0 h-[1.5px] bg-primary-red group-hover:w-full transition-all duration-300 shadow-[0_0_10px_#ff3333]" />
             </a>
           ))}
-          <button className="bg-primary-red hover:bg-red-700 text-white px-6 py-2 rounded-none font-bold uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-[0_0_15px_rgba(255,51,51,0.4)]">
-            Join Now
+          <button className="bg-white hover:bg-primary-red text-black hover:text-white px-8 py-3 rounded-full font-black text-[10px] uppercase tracking-[0.3em] transition-all hover:scale-110 active:scale-95 shadow-2xl hover:shadow-[0_0_30px_rgba(255,51,51,0.5)]">
+            Join Elite
           </button>
         </div>
 

@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Check, Star } from 'lucide-react';
+import { Check, ArrowRight } from 'lucide-react';
 
 export function Pricing() {
   const plans = [
@@ -69,49 +69,57 @@ export function Pricing() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className={`relative group glass p-10 rounded-[32px] border-2 transition-all duration-500 hover:scale-[1.02] ${
-                plan.recommended ? 'border-primary-red scale-[1.05]' : 'border-white/5 hover:border-white/20'
+              transition={{ delay: idx * 0.1, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              className={`relative group p-10 rounded-[40px] transition-all duration-700 flex flex-col hover:translate-y-[-16px] ${
+                plan.recommended 
+                  ? 'bg-linear-to-b from-primary-red/20 to-primary-red/5 border-2 border-primary-red/50 shadow-[0_40px_100px_-20px_rgba(255,51,51,0.25)] scale-[1.05] z-20' 
+                  : 'glass-morphism border border-white/5 hover:border-white/20'
               }`}
             >
               {plan.recommended && (
-                <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-primary-red text-white text-[10px] font-black uppercase tracking-[0.3em] py-2 px-6 rounded-full shadow-[0_0_20px_rgba(255,51,51,0.5)]">
+                <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-primary-red text-white text-[10px] font-black uppercase tracking-[0.4em] py-3 px-8 rounded-full shadow-[0_10px_30px_rgba(255,51,51,0.5)] z-30">
                   Most Popular
                 </div>
               )}
 
-              <div className="mb-8">
-                <h3 className="text-xl font-display font-black uppercase tracking-widest text-primary-red mb-4 italic">
+              <div className="mb-12 text-center">
+                <h3 className={`text-[10px] font-black uppercase tracking-[0.5em] mb-4 block italic ${plan.recommended ? 'text-primary-red text-glow' : 'text-gray-500'}`}>
                   {plan.name}
                 </h3>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-gray-500 font-bold text-lg italic">₹</span>
-                  <span className="text-5xl font-display font-black tracking-tighter italic">{plan.price}</span>
-                  <span className="text-gray-500 font-bold uppercase text-[10px] tracking-widest bg-white/5 px-2 py-1 rounded ml-2">
-                    {plan.period}
+                <div className="flex items-baseline justify-center gap-1">
+                  <span className={`font-display font-black text-xl italic ${plan.recommended ? 'text-primary-red' : 'text-gray-600'}`}>₹</span>
+                  <span className="text-7xl font-display font-black tracking-tighter italic text-white drop-shadow-2xl">
+                    {plan.price}
                   </span>
+                </div>
+                <div className="mt-2">
+                   <span className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 bg-white/5 px-4 py-1 rounded-full border border-white/5">{plan.period} COMMITMENT</span>
                 </div>
               </div>
 
-              <div className="space-y-4 mb-10 min-h-[240px]">
+              <div className="space-y-6 mb-12 flex-1">
                 {plan.features.map((feature, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-primary-red/10 flex items-center justify-center shrink-0">
-                      <Check className="text-primary-red" size={12} strokeWidth={4} />
+                  <div key={i} className="flex items-center gap-4 group/item">
+                    <div className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 group-hover/item:scale-110 ${plan.recommended ? 'bg-primary-red/20 text-primary-red' : 'bg-white/5 text-primary-red/50'}`}>
+                      <Check size={12} strokeWidth={4} />
                     </div>
-                    <span className="text-sm font-medium text-gray-300">{feature}</span>
+                    <span className="text-[11px] font-black uppercase tracking-wider text-gray-300 group-hover/item:text-white transition-colors">
+                      {feature}
+                    </span>
                   </div>
                 ))}
               </div>
 
               <button
-                className={`w-full py-5 rounded-2xl font-black uppercase tracking-widest transition-all ${
+                className={`w-full py-6 rounded-[20px] font-black uppercase tracking-[0.3em] text-[10px] transition-all duration-500 flex items-center justify-center gap-3 group/btn overflow-hidden relative ${
                   plan.recommended
-                    ? 'bg-primary-red text-white shadow-[0_10px_30px_rgba(255,51,51,0.4)] hover:bg-red-700'
-                    : 'bg-white/5 text-white border border-white/10 hover:bg-white/10'
+                    ? 'bg-primary-red text-white shadow-[0_20px_40px_rgba(255,51,51,0.4)] hover:bg-black hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)]'
+                    : 'bg-white/5 text-white border border-white/10 hover:border-primary-red hover:bg-primary-red'
                 }`}
               >
-                Join Now <ArrowRight className="inline-block ml-2 group-hover:translate-x-1 transition-transform" size={16} />
+                <span className="relative z-10 transition-transform group-hover/btn:-translate-x-1">Secure Entrance</span>
+                <ArrowRight size={14} className="relative z-10 transition-all duration-500 group-hover/btn:translate-x-2" />
+                <div className="absolute inset-0 bg-white/10 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500" />
               </button>
             </motion.div>
           ))}
@@ -120,5 +128,3 @@ export function Pricing() {
     </section>
   );
 }
-
-import { ArrowRight } from 'lucide-react';

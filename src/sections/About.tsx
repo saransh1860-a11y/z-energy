@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, ArrowRight } from 'lucide-react';
 
 export function About() {
   const highlights = [
@@ -44,27 +44,32 @@ export function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-primary-red font-black uppercase tracking-[0.4em] text-xs mb-4 block">Our Philosophy</span>
-            <h2 className="text-4xl md:text-6xl font-display font-black uppercase italic mb-8 leading-[1.1] tracking-tight">
-              Where Engineering <br />
-              <span className="text-gradient">Meets Human Effort.</span>
+            <span className="text-primary-red font-black uppercase tracking-[0.4em] text-xs mb-6 block drop-shadow-[0_0_10px_rgba(255,51,51,0.3)]">Our Heritage of Power</span>
+            <h2 className="text-4xl md:text-7xl font-display font-black uppercase italic mb-8 leading-[0.9] tracking-tighter">
+              The Science <br />
+              <span className="text-white text-glow">Of Superiority.</span>
             </h2>
-            <p className="text-gray-400 text-lg mb-8 leading-relaxed">
-              At Zenergy Fitness, we don't just provide a gym; we provide a high-performance environment engineered for results. 
-              Our philosophy blend cutting-edge sports science with raw, old-school discipline to forge physiques that are as powerful as they look.
+            <p className="text-gray-400 text-lg mb-10 leading-relaxed font-medium">
+              Zenergy Fitness isn't just a destination in Ambala; it's a movement. We've meticulously engineered a sanctuary where high-performance technology meets raw, human ambition. 
+              Our philosophy is simple: provide the world's most advanced equipment, the industry's most disciplined coaches, and an environment that demands your absolute best.
             </p>
 
-            <div className="space-y-4 mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
               {highlights.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-3">
-                  <CheckCircle2 className="text-primary-red shrink-0" size={20} />
-                  <span className="font-bold text-sm uppercase tracking-wide">{item}</span>
+                <div key={idx} className="flex items-center gap-4 group">
+                  <div className="w-6 h-6 rounded-full border border-primary-red/50 flex items-center justify-center group-hover:bg-primary-red transition-all duration-300">
+                    <CheckCircle2 className="text-primary-red group-hover:text-white transition-colors" size={14} strokeWidth={3} />
+                  </div>
+                  <span className="font-bold text-[11px] uppercase tracking-wider text-gray-300">{item}</span>
                 </div>
               ))}
             </div>
 
-            <button className="border-b-2 border-primary-red pb-1 text-sm font-black uppercase tracking-widest hover:text-primary-red transition-all cursor-pointer">
-              Discover Our History
+            <button className="group flex items-center gap-4 text-xs font-black uppercase tracking-[0.3em] text-white hover:text-primary-red transition-all">
+              <span className="border-b-2 border-primary-red pb-1">Uncover Our DNA</span>
+              <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-primary-red transition-all">
+                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </div>
             </button>
           </motion.div>
         </div>
